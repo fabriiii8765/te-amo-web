@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Te Amo</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+    }
+
+    .center-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px pink;
+      z-index: 10;
+    }
+
+    .te-amo {
+      position: absolute;
+      color: pink;
+      font-size: 24px;
+      animation: fall linear infinite;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -50px;
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Imagen central (reemplaza el src con tu imagen deseada) -->
+  <img src="miamor.jpg" class="center-image" alt="Foto en el centro">
+
+  <script>
+    function crearLluvia() {
+      const texto = document.createElement('div');
+      texto.classList.add('te-amo');
+      texto.textContent = 'Te amo';
+
+      // posición aleatoria horizontal
+      texto.style.left = Math.random() * 100 + 'vw';
+      texto.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+      document.body.appendChild(texto);
+
+      // eliminar el texto después de la animación
+      setTimeout(() => {
+        texto.remove();
+      }, 5000);
+    }
+
+    setInterval(crearLluvia, 200);
+  </script>
+
+</body>
+</html>
